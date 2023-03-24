@@ -17,7 +17,7 @@ from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.metrics import classification_report
 from scipy.spatial.distance import cdist
 from PIL import Image
-from fastlapjv import fastlapjv
+from lapjv import lapjv
 import multiprocessing
 from anytree import Node
 
@@ -80,8 +80,8 @@ def grid_layout(idx, X, selected_list, selected_pos, ent,
     # begin LAP-JV
     logger.info("begin LAP JV")
     t = time()
-    # row_asses, col_asses, info = lapjv(cost_matrix)
-    row_asses, col_asses, info = fastlapjv(cost_matrix, k_value=50)
+    row_asses, col_asses, info = lapjv(cost_matrix)
+    # row_asses, col_asses, info = fastlapjv(cost_matrix, k_value=50)
     col_asses = col_asses[:num]
     grid_X = grids[col_asses]
     logger.info("train cost: {}, time cost: {}"
